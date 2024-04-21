@@ -1,19 +1,19 @@
-import { Sidebar } from "flowbite-react";
-import { BiBuoy } from "react-icons/bi";
+import { Sidebar , Avatar} from "flowbite-react";
+import { BiBuoy, BiSolidEdit } from "react-icons/bi";
 import { HiArrowSmRight, HiChartPie, HiInbox, HiOutlineCloudUpload, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
 import userImg from "../assets/profile.jpg"
 import { useContext } from "react";
 import { AuthContext } from "../contects/AuthProvider";
+import { FaDeleteLeft, FaDownLeftAndUpRightToCenter } from "react-icons/fa6";
 
 export const SideBar = () => {
   const{user} = useContext(AuthContext)
   return (
-    <Sidebar aria-label="Sidebar with content separator example" className="bg-gray-200">
-        <Sidebar.Logo href="/" img={user?.photoURL} className='w-16 h-16' >
+    <Sidebar aria-label="Sidebar with content separator example" className="bg-blue-200">
+        <Sidebar.Logo href="/" img className='w-16 h-16' >
+        <Avatar rounded size="xs" img="/src/assets/ME-1.jpg" alt="profile picture" />
        <p> 
-        {
-          user?.displayName || "Demo user"
-        }
+        Mohana Sree Katam
        </p>
       </Sidebar.Logo>
       <Sidebar.Items>
@@ -27,10 +27,14 @@ export const SideBar = () => {
           <Sidebar.Item href="/admin/dashboard/manage" icon={HiInbox}>
            Manage Books
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
-            Users
+          <Sidebar.Item href="/admin/dashboard/manage" icon={BiSolidEdit}>
+           Edit Books
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
+          <Sidebar.Item href="/admin/dashboard/manage" icon={FaDeleteLeft}>
+           Delete Books
+          </Sidebar.Item>
+          
+          <Sidebar.Item href="/shop" icon={HiShoppingBag}>
             Products
           </Sidebar.Item>
           <Sidebar.Item href="/login" icon={HiArrowSmRight}>
@@ -41,15 +45,7 @@ export const SideBar = () => {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
-            Upgrade to Pro
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
-            Documentation
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={BiBuoy}>
-            Help
-          </Sidebar.Item>
+          
         </Sidebar.ItemGroup>
       </Sidebar.Items>
     </Sidebar>

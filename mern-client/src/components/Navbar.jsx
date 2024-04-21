@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import{FaBarsStaggered, FaBlog, FaXmark} from "react-icons/fa6";
 import { AuthContext } from '../contects/AuthProvider';
+import { Avatar } from 'flowbite-react';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,12 +33,13 @@ const Navbar = () => {
     //nav items
 
     const navItems = [
-        {link : "Home", path:"/"},
-        {link : "About", path:"/about"},
-        {link : "shop", path:"/shop"},
-        {link : "Sell your Book", path:"/admin/dashboard"},
-        {link : "Blog", path:"/blog"},
+        {link : "Home", path:"/home"},
+        {link : "Find Your Book", path:"/shop"},
+        {link : "Sell your Book", path:"/login"},
+        {link : "Contact Us", path:"/blog"},
     ]
+
+    
   return (
     <header className='w-full bg-transparent fixed top-0 left-0 right-0 transition-all ease-in duration-300'>
         <nav className={`py-4 lg:px-24 px-4 ${isSticky ?  "sticky top-0 left-0 right-0 bg-blue-300":""}`}>
@@ -55,6 +57,10 @@ const Navbar = () => {
 
                 <div className='space-x-12 hidden lg:flex items-center'>
                     <button><FaBarsStaggered className='w-5 hover:text blue-700' /></button>
+                    {
+                        user? user.email : ""
+                    }
+                    <Avatar rounded size="xs" img={user?.photoURL} alt="profile picture" />
                 </div>
 
                 {/*menu btn for mobile devices*/}

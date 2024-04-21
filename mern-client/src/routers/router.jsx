@@ -17,14 +17,20 @@ import SignUp from "../components/SignUp";
 import Login from "../components/Login";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Logout from "../components/Logout";
+import LoginUser from "../components/LoginUser";
 
   const router = createBrowserRouter([
+    {
+      path:'/',
+      element: <LoginUser/>
+  },
     {
       path: "/",
       element: <App/>,
       children:[
+       
         {
-            path:'/',
+            path:'/home',
             element: <Home/>
         },
         {
@@ -77,7 +83,7 @@ import Logout from "../components/Logout";
 
     },
     {
-      path:"login",
+      path:"/login",
       element:<Login/>
     },
     {
